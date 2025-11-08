@@ -3,15 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>เกมจีบสาว: เมย์</title>
+  <title>Neon Tower Defense</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="game-container">
-    <h1>จีบสาว: เมย์</h1>
-    <div id="scene-text">กำลังโหลด...</div>
-    <div id="choices-container"></div>
-  </div>
-  <script src="script.js"></script>
+  <header class="hud">
+    <div class="hud-item">คลื่น <span id="wave">1</span></div>
+    <div class="hud-item">ทอง <span id="gold">100</span></div>
+    <div class="hud-item">ฐาน <span id="lives">10</span></div>
+    <button id="start-wave" class="primary">เริ่มคลื่น</button>
+  </header>
+
+  <main id="layout">
+    <section id="board-wrapper">
+      <canvas id="stage" width="640" height="512"></canvas>
+      <div id="message"></div>
+    </section>
+
+    <aside id="build-panel">
+      <h1>Neon Field</h1>
+      <p class="intro">เลือกป้อม แล้วยิงศัตรูที่วิ่งตามเส้นทางเพื่อปกป้องฐานของคุณ</p>
+
+      <div class="tower-list">
+        <button class="tower-card" data-tower="basic">
+          <div class="tower-icon basic">B</div>
+          <div class="tower-info">
+            <strong>ป้อมพื้นฐาน</strong>
+            <span>ราคา 50 | ระยะกลาง | ยิงต่อเนื่อง</span>
+          </div>
+        </button>
+
+        <button class="tower-card" data-tower="burst">
+          <div class="tower-icon burst">R</div>
+          <div class="tower-info">
+            <strong>ป้อมกระสุนคู่</strong>
+            <span>ราคา 70 | ระยะใกล้ | ยิงเร็ว</span>
+          </div>
+        </button>
+
+        <button class="tower-card" data-tower="sniper">
+          <div class="tower-icon sniper">S</div>
+          <div class="tower-info">
+            <strong>ป้อมสไนเปอร์</strong>
+            <span>ราคา 90 | ระยะไกล | ยิงแรง</span>
+          </div>
+        </button>
+      </div>
+
+      <div class="selection-status">ป้อมที่เลือก: <span id="selected-tower">-</span></div>
+
+      <section class="tips">
+        <h2>วิธีเล่น</h2>
+        <ul>
+          <li>คลิกเลือกป้อม แล้วคลิกบนตารางสีเข้มเพื่อวาง</li>
+          <li>รับทองจากศัตรูเพื่อสร้างป้อมเพิ่ม</li>
+          <li>กด "เริ่มคลื่น" เพื่อเรียกศัตรูชุดถัดไป</li>
+          <li>ชีวิตฐานเหลือ 0 = เกมจบ</li>
+        </ul>
+      </section>
+    </aside>
+  </main>
+
+  <footer>
+    <span>สร้างโดยคุณ</span>
+  </footer>
+
+  <script src="game.js"></script>
 </body>
 </html>
